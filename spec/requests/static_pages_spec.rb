@@ -1,24 +1,25 @@
 require 'spec_helper'
 
 describe "StaticPages" do
+
+  subject {page}
+
   describe "Home Page" do
-    it "should have the content 'Make Decision'" do
-      visit '/static_pages/home'
-      page.should have_content('Make Decision')
-    end
+    before {visit root_path}
+
+    it {should have_selector 'h1', text: 'Make Decision'}
+    it {should have_selector 'title', text: 'Make Decision'}
   end
 
   describe "Help Page" do
-    it "should have the content 'Help'" do
-      visit '/static_pages/help'
-      page.should have_content('Help')
-    end
+    before {visit help_path}
+
+    it {should have_selector 'h1', text: 'Help'}
   end
 
   describe "About Page" do
-    it "should have the content 'About us'" do
-      visit '/static_pages/about'
-      page.should have_content('About Us')
-    end
+    before {visit about_path}
+
+    it {should have_selector 'h1', text: 'About Us'}
   end
 end

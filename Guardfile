@@ -36,10 +36,11 @@ guard 'rspec', :version => 2, :all_after_pass => false, :cli => '--drb' do
 
 end
 
-
+=begin
 guard 'spork', rspec_env:  { 'RAILS_ENV' => 'test' },
                cucumber:   false,
-               test_unit: false do
+               test_unit: false,
+               wait: 120 do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch(%r{^config/environments/.+\.rb$})
@@ -51,3 +52,4 @@ guard 'spork', rspec_env:  { 'RAILS_ENV' => 'test' },
  # watch(%r{features/support/}) { :cucumber }
 
 end
+=end

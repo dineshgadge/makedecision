@@ -13,11 +13,17 @@ class User < ActiveRecord::Base
 
   # Callbacks
   before_save do |user|
-    user.email = email.downcase
+    user.email.downcase!
   end
+  before_save :create_remember_token
 
   # Behavior
   has_secure_password
 
+  private
+
+  def create_remember_token
+    self.remember_token = SecureRandom.urlsafe_base64
+  end
 
 end
